@@ -10,7 +10,7 @@
 
 **Uso JSX**
 
-* Podemos crear componentes de la siguiente forma: const Componente: <h1> `<p> Hola! </p>`
+* Podemos crear componentes de la siguiente forma: `const Componente =` <h1> `<p> Hola! </p>`
 * Y referirlo de la siguiente forma: `<Componente/>`
 * Es el uso de componentes a traves de tags
 
@@ -28,5 +28,19 @@
 ## Estructura
 
 * __ tests __ : Carpeta de UnitTesting
-* Carpetas android y iOS con el codigo nativo de cada uno.
+* Carpetas android~~~~ y iOS con el codigo nativo de cada uno.
 * index.js : Entry point de la aplicacion
+
+## Componentes
+
+* Son "pedacitos" de la aplicacion.
+* `<View></View>` posee una similutud con los div de HTML.
+* Los componentes dentro del render() deben ir SI O SI encapsulados. No puede devolver mas de un componente al mismo nivel. `<View> </View> <Hola> </Hola>` = No es correcto. `<View><Hola/></View>` = Si es correcto
+* Se recomienda ver **Flexbox** para poner mejores estilos a nuestros componentes.
+* Al crear un componente siempre se deben hacer los siguientes imports
+
+``import React from 'react';``
+
+``import {View, StyleSheet} from 'react-native';``
+
+*
