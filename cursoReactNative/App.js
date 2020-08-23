@@ -40,7 +40,7 @@ const App: () => React$Node = () => {
     /></Text>
 <Text>
     <Componente1
-    //Podemos agregar el mismo componente pero con distintas props
+    //Podemos agregar el mismo componente pero con distintas props, funcionan de forma independiente entre si
     text="Soy el componente 1 pero repetido"/></Text>
 
     <ComponenteBoton/>
