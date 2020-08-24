@@ -1,5 +1,7 @@
 # React Native 🚀️
 
+Apuntes basados en el siguiente curso de Youtube: [https://www.youtube.com/watch?v=xQpHaKWHdFI&list=PLUlw6638d2QZFbQfC3sB5mKWJUWr2HEkc&index=14](https://www.youtube.com/watch?v=xQpHaKWHdFI&list=PLUlw6638d2QZFbQfC3sB5mKWJUWr2HEkc&index=14)
+
 ## Qué hay en este repositorio? 😕
 
 * reactNativeGithub => Primer proyecto base
@@ -68,7 +70,7 @@
 * **componentDidUpdate:** Luego del renderizado. *DEPRECADO 👎 * UNSAFE
 * **componentWillUnmount:** El componente esta a punto de ser desmontado de la pantalla. No existe un **didUnmount** ya que el componente no existe mas, no se puede hacer mas nada con el mismo.
 
-## Pure Component 👀️ 
+## Pure Component 👀️
 
 * Al importarla, en lugar de extender de Component, extendemos de PureComponent.
 * Nos permite trabajar el "shouldcomponentupdate" (activar render o no dependiendo de valor del counter)
@@ -85,7 +87,7 @@
   }
 ```
 
-## Componentes Fragmentados 👀️ 
+## Componentes Fragmentados 👀️
 
 * Los componentes deben devolverse dentro de un solo < View> </ View>, pero a veces se necesitan retornar 2 componentes sin un contenedor en comun. Para esto esta el Fragment
 * Importamos fragment junto con React => ``import React, {Component, Fragment} from 'react';``
@@ -100,3 +102,19 @@
             <Text style={styles.btnText}>+ 10</Text>
           </TouchableOpacity></Fragment>
 ```
+
+* Tambien se puede declarar de forma "anonima" de la siguiente manera => `<> </>`
+
+## Estructura del Proyecto 🚀️
+
+* **Tests:** Contenera todos los tests de la aplicacion, la crea el CLI de React native
+* **Mocks:** Para poner datos de prueba en nuestra aplicacion, como datos falsos para llamadas a la API.
+* **App:** Va a contener todo lo relacionado con la aplicacion. Muchos folders.
+* **API:** Configuraciones de librerias, etc.. (Dentro de app)
+* **Assets:** Iconos, estilos, imagenes
+* **Components**: Componentes reusables de la aplicacion
+* **Settings:** Configs. de la aplicacion. Identificadores de selects, etc..
+* **Navigator:** Configuracion de react navigation
+* **Libs:** Archivos JS con funciones custom~~~~
+* **Views:** Cada modulo, o pantallas para trabajar. (Login, Home, etc..)
+* **Store:** Configuracion de redux

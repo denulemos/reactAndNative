@@ -3,13 +3,13 @@ import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 
 class ActionButtons extends Component{
     render(){
-        const {reset} = this.props;
+        const {reset , plus} = this.props;
         return(
             <Fragment>
             <TouchableOpacity style={styles.btnreset} onPress={reset}>
             <Text style={styles.btnText}>Reset</Text>
           </TouchableOpacity>
-            <TouchableOpacity style={styles.btnreset} onPress={reset}>
+            <TouchableOpacity style={styles.btnreset} onPress={plus}>
             <Text style={styles.btnText}>+ 10</Text>
           </TouchableOpacity></Fragment>
         );

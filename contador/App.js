@@ -46,6 +46,7 @@ class App extends PureComponent {
     this.suma = this.suma.bind(this);
     this.resta = this.resta.bind(this);
     this.reset = this.reset.bind(this);
+    this.sumarDiez = this.sumarDiez.bind(this);
   }
 
   //Queremos ejecutar el render? Sin PureComponent
@@ -65,6 +66,11 @@ class App extends PureComponent {
   //Se ejecuta luego del renderizado de la pantalla
   componentDidMount() {
     console.log('Montado');
+  }
+
+  sumarDiez(){
+    const {counter: ct} = this.state;
+    this.setState({counter: ct + 10});
   }
 
   //Modificar estados
@@ -103,7 +109,7 @@ class App extends PureComponent {
           <Button label="+" action={this.suma}></Button>
         </View>
         <View style={styles.subcontainerReset}>
-        <ActionButtons reset={this.reset}></ActionButtons>
+        <ActionButtons reset={this.reset} plus={this.sumarDiez}></ActionButtons>
         </View>
       </View>
     );
