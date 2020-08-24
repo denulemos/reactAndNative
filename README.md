@@ -1,6 +1,6 @@
-# React Native 🚀️ 
+# React Native 🚀️
 
-## Qué hay en este repositorio? 😕 
+## Qué hay en este repositorio? 😕
 
 * reactNativeGithub => Primer proyecto base
 * contador => Aplicacion basica, un contador de numeros mediante botones.
@@ -19,7 +19,7 @@
 * Y referirlo de la siguiente forma: `<Componente/>`
 * Es el uso de componentes a traves de tags
 
-## Instalacion (Windows) 🎉️ 
+## Instalacion (Windows) 🎉️
 
 * Instalar NVM para el manejo de versiones
 * Instalar JDK. Configurar JAVA_HOME en las variables de entorno del sistema.
@@ -32,13 +32,13 @@
 * Personalmente, para que el comando `run-android` me anduviera correctamente, tuve que abrir el proyecto en Android Studio y dejar que Gradle se configure solo junto con el SDK. **Recomiendo hacer el build en Android Studio, al menos una sola vez.**
 * `npm i prop-types` => Instalar libreria prop-types, para manejar tipos de datos
 
-## Estructura 👀️ 
+## Estructura 👀️
 
 * __ tests __ : Carpeta de UnitTesting
 * Carpetas android~~~~ y iOS con el codigo nativo de cada uno.
 * index.js : Entry point de la aplicacion
 
-## Componentes 👀️ 
+## Componentes 👀️
 
 * Son "pedacitos" de la aplicacion.
 * `<View></View>` posee una similutud con los div de HTML.
@@ -58,4 +58,45 @@
 * Un componente hijo (importado), idealmente, no podria modificar el estado del componente padre (el que lo importa). Si necesito hacerlo, le mando una accion al hijo desde el padre, donde se modifique el estado. (caso suma() y resta() de contador)
 * Un componente pose **fases** desde que se monta hasta que se va, a esto se le dice **Ciclo de vida** y pueden ser manejados por React.
   Montaje => Actualizacion => Desmontaje.
-  Constructor => ComponentwillMount (Util para, por ejemplo, obtener la medida de la pantalla antes de cualquier otra cosa) =>Render (no puedo hacer this.setState en el mismo, ya que setState llama al render, y se daria un loop infinito) => ComponentDidMount (Util para peticiones asincronas, aunque puede llevar a problemas de performance ya que debe llamar de vuelta al Render(), aca si se puede usar el setState).
+  Constructor => **ComponentwillMount** (Util para, por ejemplo, obtener la medida de la pantalla antes de cualquier otra cosa) *DEPRECADO 👎*  UNSAFE => **Render** (no puedo hacer this.setState en el mismo, ya que setState llama al render, y se daria un loop infinito) => **ComponentDidMount** (Util para peticiones asincronas, aunque puede llevar a problemas de performance ya que debe llamar de vuelta al Render(), aca si se puede usar el setState).
+* El componente padre NO termina de renderizarse hasta que no se terminen de renderizar todos sus hijos.
+
+  ## Ciclo de vida de Actualizacion 👀️
+* **componentWillReceiveProps** : Se ejecuta cuando hay actualizacion de alguna prop, o se modifica alguna prop.
+* **shouldComponentUpdate:** Nos permite decidir si debemos ejecutar de vuelta, o no, el render. Muestra con que valores se va a realizar la actualizacion.
+* **componentWillUpdate:** Ya esta a punto de correr el render(). *DEPRECADO*  👎 UNSAFE
+* **componentDidUpdate:** Luego del renderizado. *DEPRECADO 👎 * UNSAFE
+* **componentWillUnmount:** El componente esta a punto de ser desmontado de la pantalla. No existe un **didUnmount** ya que el componente no existe mas, no se puede hacer mas nada con el mismo.
+
+## Pure Component 👀️ 
+
+* Al importarla, en lugar de extender de Component, extendemos de PureComponent.
+* Nos permite trabajar el "shouldcomponentupdate" (activar render o no dependiendo de valor del counter)
+* Optimizamos los componentes que necesitan comprobar si realmente el render() es necesario
+* Reemplaza lo siguiente:
+
+```
+   shouldComponentUpdate(nextProps, nextState) {
+     const {counter} = this.state;
+     //Si el valor a cambiar es el mismo valor del actual, no renderizar
+     if (nextState.counter === counter) return false;
+     //De lo contrario, renderizar
+     return true;
+  }
+```
+
+## Componentes Fragmentados 👀️ 
+
+* Los componentes deben devolverse dentro de un solo < View> </ View>, pero a veces se necesitan retornar 2 componentes sin un contenedor en comun. Para esto esta el Fragment
+* Importamos fragment junto con React => ``import React, {Component, Fragment} from 'react';``
+* Usamos fragment en lugar de View, para no luchar con los estilos =>
+
+```
+<Fragment>
+            <TouchableOpacity style={styles.btnreset} onPress={reset}>
+            <Text style={styles.btnText}>Reset</Text>
+          </TouchableOpacity>
+            <TouchableOpacity style={styles.btnreset} onPress={reset}>
+            <Text style={styles.btnText}>+ 10</Text>
+          </TouchableOpacity></Fragment>
+```
