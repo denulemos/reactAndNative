@@ -43,4 +43,6 @@
 
 ``import {View, StyleSheet} from 'react-native';``
 
-*
+* Para que el componente pueda ser importado por otros componentes, debe ser exportado
+
+`export default nombreComponente`

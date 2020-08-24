@@ -18,4 +18,5 @@ container: {
 
 })
 
+//Exportamos el componente para que pueda ser importado por otro
 export default Viewer;
