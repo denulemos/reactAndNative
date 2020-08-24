@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,6 +14,7 @@ import {
   View,
   Text,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -24,90 +25,80 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
+import Button from './componentes/button';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      //Inicializamos contador
+      counter: 0,
+    };
+
+    //setState vuelve a renderizar, refresca la pantalla con lo nuevo
+    //Buena costumbre, es bindear todas las funciones que usen this, para que no se pierda el contexto
+    this.suma = this.suma.bind(this);
+    this.resta = this.resta.bind(this);
+  }
+
+  //Modificar estados
+  suma() {
+    //Obtengo valor actual de counter con un alias
+    const {counter: ct} = this.state;
+    //Le sumo uno y se lo seteo al state con el nuevo valor
+    this.setState({counter: ct + 1});
+  }
+  resta() {
+    const {counter: ct} = this.state;
+    //Podemos ejecutar un callback para actualizar el counter al valor que yo quiera, como cero.
+    //this.setState({counter : ct - 1}), () => this.setState({counter : 0}));
+    this.setState({counter: ct - 1});
+  }
+
+  render() {
+    //Tomo del objeto estado la propiedad counter
+    const {counter} = this.state;
+    //eL nombre de los props que mando debe ser igual a como los recibo (label y action)
+    return (
+      <View style={styles.container}>
+        <View style={styles.subcontainer}>
+
+         <Button label="-" action={this.resta}></Button>
+
+          <View style={styles.counterContainer}>
+            <Text style={styles.contador}>{counter}</Text>
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+
+
+          <Button label="+" action={this.suma}></Button>
+        </View>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    flex: 1, //Totalidad pantalla
+    backgroundColor: '#fab1a0', //https://flatuicolors.com/palette/us
+    justifyContent: 'center',
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  subcontainer: {
+    height: 50,
+    width: '100%', //Todo el ancho del dispositivo
+    paddingHorizontal: 10,
+    flexDirection: 'row',
   },
-  body: {
-    backgroundColor: Colors.white,
+  counterContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  contador: {
+    fontSize: 25,
+    color: '#FFF',
+    fontWeight: 'bold',
   },
 });
 
