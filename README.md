@@ -1,5 +1,10 @@
 # React Native
 
+## Qué hay en este repositorio?
+
+* reactNativeGithub => Primer proyecto base
+* contador => Aplicacion basica, un contador de numeros mediante botones. (Trabajo con props y estados, componentes)
+
 **¿Qué es React Native y como funciona?**
 
 * Un mismo codigo fuente puede exportar a iOS y Android.
@@ -10,7 +15,7 @@
 
 **Uso JSX**
 
-* Podemos crear componentes de la siguiente forma: `const Componente =` <h1> `<p> Hola! </p>`
+* Podemos crear componentes de la siguiente forma: `const Componente = <p> Hola! </p>`
 * Y referirlo de la siguiente forma: `<Componente/>`
 * Es el uso de componentes a traves de tags
 
@@ -24,6 +29,7 @@
 * Crear proyecto => `react-native init reactNativeGithub`
 * Correr Metro (Servidor local) =>` react-native start`
 * Correr aplicacion (Con telefono conectado o emulador corriendo) => `react-native run-android`
+* Personalmente, para que el comando `run-android` me anduviera correctamente, tuve que abrir el proyecto en Android Studio y dejar que Gradle se configure solo junto con el SDK. **Recomiendo hacer el build en Android Studio, al menos una sola vez.**
 
 ## Estructura
 
@@ -46,3 +52,6 @@
 * Para que el componente pueda ser importado por otros componentes, debe ser exportado
 
 `export default nombreComponente`
+
+* **Props:** Se usan para pasarle informacion de un componente a otro.
+* Un componente hijo (importado), idealmente, no podria modificar el estado del componente padre (el que lo importa). Si necesito hacerlo, le mando una accion al hijo desde el padre, donde se modifique el estado. (caso suma() y resta() de contador)
