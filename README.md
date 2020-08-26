@@ -6,6 +6,7 @@ Apuntes basados en el siguiente curso de Youtube: [https://www.youtube.com/watch
 
 * reactNativeGithub => Primer proyecto base
 * contador => Aplicacion basica, un contador de numeros mediante botones.
+* PostApp => Una pequeña aplicacion funcional de prueba
 
 **¿Qué es React Native y como funciona?**
 
@@ -105,16 +106,17 @@ Apuntes basados en el siguiente curso de Youtube: [https://www.youtube.com/watch
 
 * Tambien se puede declarar de forma "anonima" de la siguiente manera => `<> </>`
 
-## Estructura del Proyecto 🚀️
+## Estructura del Proyecto 🚀️ (PostApp)
 
-* **Tests:** Contenera todos los tests de la aplicacion, la crea el CLI de React native
+* **Tests:** Contenera todos los tests de la aplicacion, la crea el CLI de React native.
 * **Mocks:** Para poner datos de prueba en nuestra aplicacion, como datos falsos para llamadas a la API.
 * **App:** Va a contener todo lo relacionado con la aplicacion. Muchos folders.
+  **Esta carpeta contenera los siguientes folders =>**
 * **API:** Configuraciones de librerias, etc.. (Dentro de app)
-* **Assets:** Iconos, estilos, imagenes
-* **Components**: Componentes reusables de la aplicacion
+* **Assets:** Iconos, estilos, imagenes.
+* **Components**: Componentes reusables de la aplicacion.
 * **Settings:** Configs. de la aplicacion. Identificadores de selects, etc..
-* **Navigator:** Configuracion de react navigation
-* **Libs:** Archivos JS con funciones custom~~~~
-* **Views:** Cada modulo, o pantallas para trabajar. (Login, Home, etc..)
-* **Store:** Configuracion de redux
+* **Navigator:** Configuracion de react navigation.
+* **Libs:** Archivos JS con funciones custom.
+* **Views:** Cada modulo, o pantallas para trabajar. (Login, Home, etc..).
+* **Store:** Configuracion de redux.
