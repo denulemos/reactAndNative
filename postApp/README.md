@@ -55,3 +55,7 @@ Se usan para no montar un servidor como tal para manejar cosas como login, etc..
 8. El paso anterior nos habra generado un firebase.json, y un directorio de functions, donde estara todo lo necesario. (/posts/functions). Dentro de functions poseemos una carpeta node_modules, podemos instalar dependencias. En index.js vamos a tener las funciones para exportar, hay un ejemplo comentado.
 9. Para que las funciones esten en Firebase, deben ser **deployadas**. Para eso nos paramos en la carpeta functions y hacemos un `firebase deploy`
 10. Es necesario crear una carpeta "config" dentro de "functions" donde este la clave privada generada por firebase!.
+
+**Configuracion**
+
+* Auth Sign-in Method: Correo y Contraseña.
