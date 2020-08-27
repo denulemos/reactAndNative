@@ -4,7 +4,7 @@ const _path = 'https://pokemon-go1.p.rapidapi.com/pokemon_stats.json';
 const _pathInst = 'https://pokemon-go1.p.rapidapi.com/'; //URL Base, la API puede traer varias otras cosas mas alla de pokemones
 const _headers = {
 	'x-rapidapi-host': 'pokemon-go1.p.rapidapi.com',
-	'x-dapidapi-key': 'cd14fb2c68msh0d4d25d53c61133p1b6c38jsn5e7d7fb7a9f7',
+	'x-dapidapi-key': '', //Tu Key
 	useQueryString: true,
 };
 
