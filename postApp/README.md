@@ -7,8 +7,7 @@
 * Ejemplo axios con Pokemon Go RapidApi
 
   ```
-
-  ;.componentDidMount(){
+  componentDidMount(){
 
   //CONSTANTES
   const _path = 'https://pokemon-go1.p.rapidapi.com/pokemon_stats.json';
@@ -33,7 +32,7 @@
   url: _path
   }).then(res2 => console.log({res2}));
 
-  //SINTAXIS MAS RECOMENDADA
+  //SINTAXIS MAS RECOMENDADA, con instancias de Axios
   //axios.create nos crea una instancia de axios
   const instAxios = axios.create({
   baseURL: _pathInst, //Path base
@@ -43,6 +42,6 @@
   instAxios({
   method: 'get',
   url: 'pokemon_stats.json' //hago que la url base apunte acá
-  })
+  }).then(res3 => console.log({res3}));
   }
   ```

@@ -120,11 +120,4 @@ Apuntes basados en el siguiente curso de Youtube: [https://www.youtube.com/watch
 * **Navigator:** Configuracion de react navigation.
 * **Libs:** Archivos JS con funciones custom.
 * **Views:** Cada modulo, o pantallas para trabajar. (Login, Home, etc..).
-* **Store:** C~~~~onfiguracion de redux.
-
-## Twilio
-
-Es una herramienta que da ciertos numeros telefonicos de prueba (https://www.twilio.com/).
-
-* Obtenemos un numero.
-* Podemos setear API Endpoints para enviar SMS, Llamadas,
+* **Store:** Configuracion de redux.
