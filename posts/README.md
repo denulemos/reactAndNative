@@ -43,7 +43,7 @@ Se usan para no montar un servidor como tal para manejar cosas como login, etc..
 
 ### Configuracion Firebase / Google Functions🚀️
 
-**Se necesita tener plan Blaze en Firebase (Pago por uso) para que esto se pueda hacer!!! 😕 **
+Se necesita tener plan Blaze en Firebase (Pago por uso) para que esto se pueda hacer!!! 😕
 
 1. Crear una cuenta en **Firebase**.
 2. Crear nuevo proyecto en Firebase.

@@ -6,7 +6,8 @@ Apuntes basados en el siguiente curso de Youtube: [https://www.youtube.com/watch
 
 * reactNativeGithub => Primer proyecto base
 * contador => Aplicacion basica, un contador de numeros mediante botones.
-* PostApp => Una pequeña aplicacion funcional de prueba
+* Posts => Google Cloud Functions para PostApp (Con Twilio)
+* PostApp => Una pequeña aplicacion funcional de prueba (Axios, Hooks)~~~~
 
 **¿Qué es React Native y como funciona?**
 
