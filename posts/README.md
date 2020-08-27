@@ -1,6 +1,6 @@
-# PostApp 🚀️ 
+# PostApp - API 🚀️
 
-### Tipos de autenticaciones 👀️ 
+### Tipos de autenticaciones 👀️
 
 **Email / password:** Se ingresa correo y contraseña de un modo cifrado, Backend chequea si el usuario existe y manda una respuesta en consecuencia. Es la mas comun de todas.
 
@@ -8,7 +8,7 @@
 
 **OTP**: El usuario da un numero de telefono, complementa la autenticacion en 2 pasos (2FA: Comprueba que el usuario exista mediante un elemento que solo el usuario puede tener).
 
-### Flujo de Login 👀️ 
+### Flujo de Login 👀️
 
 1. Usuarios ingresan sus datos.
 2. Se cifran datos capturados.
@@ -18,7 +18,7 @@
 6. Se envia el token.
 7. Se guarda el token.
 
-### Flujo de 2FA 👀️ 
+### Flujo de 2FA 👀️
 
 1. Teclear datos.
 2. Enviar registro.
@@ -30,7 +30,7 @@
 8. Verificar codigo.
 9. Crear registro.
 
-### Google Cloud Functions 👀️ 
+### Google Cloud Functions 👀️
 
 Se usan para no montar un servidor como tal para manejar cosas como login, etc..
 
@@ -59,3 +59,15 @@ Se usan para no montar un servidor como tal para manejar cosas como login, etc..
 **Configuracion**
 
 * Auth Sign-in Method: Correo y Contraseña.
+
+# Twilio 🚀️
+
+Es una plataforma que, entre todas las herramientas que puede dar, nos puede dar la posibilidad de crear un servicio de mensajeria de forma facil. **Para que mi google cloud function pueda acceder a Twilio, debo tener plan Blaze.**
+
+1. Registrarse
+2. Menu -> Phone Numbers -> Get Started (si no hay nada creado) -> Get your first Twilio Phone Number -> Aceptamos el numero ->
+3. Podemos ver nuestras llaves en la home del dashboard. `(/console)`.
+4. Api Explorer -> Rutas API para crear mensajes, borrar mensajes, servicios, etc.. `(/console/api-explorer/voice)`. Desde esta misma herramienta se pueden probar los endpoints.
+5. Instalar libreria de Twilio en posts/functions => `npm i twilio`
+6. Creamos un archivo twilio.js dentro de functions, y copiamos lo que dice la documentacion de twilio con nuestras keys. (Se recomienda trabajar con variables de entorno).
+7. Documentacion para el envio de mensajes de twilio => https://www.twilio.com/docs/sms/quickstart/php. (Configuracion completa en `createUser.js`).
