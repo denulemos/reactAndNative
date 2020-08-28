@@ -1,5 +1,5 @@
 const admin = require("firebase-admin");
-const twilio = require("./twilio/twilio");
+// const twilio = require("./twilio/twilio");
 
 module.exports = function (req, res) {
   //Por default es un POST
@@ -17,31 +17,39 @@ module.exports = function (req, res) {
   //Documentacion https://firebase.google.com/docs/auth/admin/manage-users?hl=es#create_a_user
   //Crear usuario si todo es correcto
   //Esto devuelve una Promise
-  admin
-    .auth()
+
+
+  admin.auth()
     .createUser({
       email,
       emailVerified: false,
       phoneNumber,
       password,
-      displayName,
+      displayName : 'pepito',
       photoURL: "http://www.example.com/12345678/photo.png",
       disabled: false,
-    })
+    }).then(usr => res.status(200).send(usr))
+    .catch((error) => res.status(501).send({err: 'algo salio mal! :( ' , error}));
+
+
+
+    //------------CON TWILIO , ENVIO DE MENSAJE DE VERIFICACION --------------------
+
     //Resolucion promise
-    .then((usr) => {
-      //CONFIGURACION MENSAJE DE CODIGO 
-      const code = Math.floor(Math.random() * 9999); //Generamos numero random
-      return client.messages.create({
-        body: 'Soy un mensaje de prueba, tu codigo es ' + code,
-        from: '+153453432',
-        to: '+14523452335' //Se recomienda poner numero de telefono personal para probar
-      }).then(res.status(200).send(usr));
-    })
-    //Catch
-    .catch((error) =>
-      res.status(501).send({ err: "Algo salio mal! :(", error })
-    );
+    // .then((usr) => {
+    //   //CONFIGURACION MENSAJE DE CODIGO 
+    //   const code = Math.floor(Math.random() * 9999); //Generamos numero random
+    //   return client.messages.create({
+    //     body: 'Soy un mensaje de prueba, tu codigo es ' + code,
+    //     from: '+153453432',
+    //     to: '+14523452335' //Se recomienda poner numero de telefono personal para probar
+    //   }).then(res.status(200).send(usr));
+    // })
+    // //Catch
+    // .catch((error) =>
+    //   res.status(501).send({ err: "Algo salio mal! :(", error })
+    // );
+
 
   /*BODY TEST (POST)
     Si mando el mismo body 2 veces, a la segunda dara error por usuario repetido.
