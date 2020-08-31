@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --env=node",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -31,6 +31,8 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFilesAfterEnv": ["<rootDir>setupTests.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>setupTests.js"
+    ]
   }
 }

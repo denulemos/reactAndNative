@@ -8,8 +8,14 @@ import Enzyme from 'enzyme';
  */
 const { JSDOM } = require('jsdom');
 
-const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
+//SOLUCION BUG localStorage is not available for opaque origins react native JEST
+const url = 'http://localhost';
+const jsdom = new JSDOM('<!DOCTYPE html><html><body></body></html>', { url });
+
+
+//const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 const { window } = jsdom;
+
 
 function copyProps(src, target) {
   Object.defineProperties(target, {
