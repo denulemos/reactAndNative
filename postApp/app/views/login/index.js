@@ -14,14 +14,15 @@ export const styles = StyleSheet. create({
 
 class Login extends Component{
     render(){
-        const {cont = 'container'} = this.props;
+        const {cont = 'container', click} = this.props;
         return(
             <View style={styles[cont]}>
                 <Text>Email</Text>
                 <TextInput/>
                 <Text>Password</Text>
                 <TextInput/>
-                <TouchableOpacity/>
+                <TouchableOpacity
+                onPress={click}/>
             </View>
         );
     }

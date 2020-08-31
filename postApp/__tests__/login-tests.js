@@ -7,7 +7,10 @@ import { shallow } from 'enzyme';
 //Importar componente a testear
 import Login, { styles } from '../app/views/login';
 
-//Importamos estilos
+const props = {
+	cont: 'box',
+	click: jest.fn(),
+};
 
 describe('Rendering', () => {
 	//Encapsula al componente a testear
@@ -36,15 +39,25 @@ describe('Rendering', () => {
 	it('Style', () => {
 		//La propiedad Styles debe tener el estilo que yo estoy pasando, en este caso, que View tenga una propiedad de estilo llamada container
 		expect(wrapper.find('View').prop('style')).toEqual(styles.container);
-    });
-    let _wrapper;
-    beforeEach(() => {
-        _wrapper = shallow(<Login cont="box" />);
-    });
+	});
+	let _wrapper;
+	beforeEach(() => {
+		_wrapper = shallow(<Login cont="box" />);
+	});
 	it('Type Style', () => {
-		
 		expect(_wrapper.find('View').prop('style')).toEqual(styles.box);
 	});
 });
 
-describe('Interaction', () => {});
+describe('Interaction', () => {
+	let wrapper;
+	beforeEach(() => {
+		//Mock de una funcion
+		wrapper = shallow(<Login {...props} />);
+	});
+	it('Click Button', () => {
+		wrapper.find('TouchableOpacity').prop('onPress')();
+		//La funcion debe ser llamada al menos 1 vez
+		expect(props.click).toHaveBeenCalledTimes(1);
+	});
+});
