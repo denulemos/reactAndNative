@@ -1,3 +1,17 @@
+## Estructura del Proyecto 🚀️ (PostApp)
+
+* **Tests:** Contenera todos los tests de la aplicacion, la crea el CLI de React native.
+* **Mocks:** Para poner datos de prueba en nuestra aplicacion, como datos falsos para llamadas a la API.
+* **App:** Va a contener todo lo relacionado con la aplicacion. Muchos folders.**Esta carpeta contenera los siguientes folders =>**
+* **API:** Configuraciones de librerias, etc.. (Dentro de app)
+* **Assets:** Iconos, estilos, imagenes.
+* **Components**: Componentes reusables de la aplicacion.
+* **Settings:** Configs. de la aplicacion. Identificadores de selects, etc..
+* **Navigator:** Configuracion de react navigation.
+* **Libs:** Archivos JS con funciones custom.
+* **Views:** Cada modulo, o pantallas para trabajar. (Login, Home, etc..).
+* **Store:** Configuracion de redux.
+
 # Axios 🚀️
 
 * Instalamos Axios => `npm i axios`.
@@ -48,18 +62,11 @@
 
 # Axios Middleware 🚀️
 
-* Instalacion => `npm i axios-middleware` (Actualizar Metro Bundler).
-* Importamos el servicio del middleware => `import {Service} from 'axios-middleware'`
+* Instalacion =>`npm i axios-middleware` (Actualizar Metro Bundler).
+* Importamos el servicio del middleware =>`import {Service} from 'axios-middleware'`
 
-# TDD (Test Driven Dev) 👀️
+# Firebase 🚀️ 
 
-* La idea es que la menor cantidad de bugs posibles lleguen a produccion. Los test ayudan a analizar posibles errores tenidos en cuenta.
-* TDD es una metodologia, un flujo de trabajo, esto va a ser aplicado, en este proyecto, para el Front-End. Primero se hace el test (que van a fallar ya que lo que estamos testeando, no existe), lo hacemos pasar y luego refactorizamos.
-* Vamos a necesitar 2 herramientas **Jest** (Ya viene por defecto con react native) y **Enzyme** (Test interaccion). Tambien **React Dom**
-* **Test rendering** (Render componentes y estilo) y **Tipo interaccion** (Cuando apreto un boton, ¿qué envio?)
-* Instalamos Enzyme => `npm i --save-dev enzyme` (Documentacion con React: [https://enzymejs.github.io/enzyme/docs/installation/react-16.html](https://))
-* Instalamos React y React DOM => `npm i --save react@16 react-dom@16`
-* Instalamos Adapters => `npm i --save-dev enzyme enzyme-adapter-react-16`
-* Instamos jest-enzyme (Puente ambas librerias) => `npm i --save-dev jest-enzyme`
-* Crear setup-tests.js y copiar el codigo de la siguiente documentacion => [https://enzymejs.github.io/enzyme/docs/guides/react-native.html](https://)
-* Agregamos la siguiente linea al array de `package.json` de jest => `"setupFilesAfterEnv": ["<rootdir>/setupTests.js"]`
+* Instalamos el cliente de Firebase para React Native =>`npm install --save @react-native-firebase/app`.
+* Registramos a la App desde firebase. (Al nombre del proyecto, debemos ponerle com.(nombre), en este caso, es com.postapp).
+* Instalamos libreria de auth =>`npm install --save @react-native-firebase/auth`
