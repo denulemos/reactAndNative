@@ -35,6 +35,7 @@ Apuntes basados en el siguiente curso de Youtube: [https://www.youtube.com/watch
 * Correr aplicacion (Con telefono conectado o emulador corriendo) => `react-native run-android`
 * Personalmente, para que el comando `run-android` me anduviera correctamente, tuve que abrir el proyecto en Android Studio y dejar que Gradle se configure solo junto con el SDK. **Recomiendo hacer el build en Android Studio, al menos una sola vez.**
 * `npm i prop-types` => Instalar libreria prop-types, para manejar tipos de datos
+* Si queres usar este mismo repositorio, recomiendo instalar el SDK 29, de lo contrario, no se podra levantar el proyecto.
 
 ## Estructura 👀️
 
