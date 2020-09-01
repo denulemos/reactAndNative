@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 import auth from '@react-native-firebase/auth';
-
+import userImg from '../../assets/iconos/usuario.png';
 
 
 export const styles = StyleSheet.create({
@@ -47,7 +47,7 @@ export const styles = StyleSheet.create({
 	img: {
 		width: 100,
 		height: 100,
-		tintColor: '#FFF',
+		tintColor: '#FFF', //Elegimos el color de la imagen
 	},
 });
 
@@ -55,6 +55,7 @@ class Login extends Component {
 	constructor(props) {
 		super(props);
 
+		//Inicializacion de estados de campos de login
 		this.state = {
 			Email: null,
 			Password: null,
@@ -83,11 +84,12 @@ class Login extends Component {
 	}
 
 	render() {
-		const { Email, Password } = this.state;
+		const { Email, Password } = this.state; //Traemos las inicializaciones desde el state
 		return (
 			<View style={styles.container}>
 				<View style={styles.subcontainer}>
 					<Image
+					//source={uri}
 						source={userImg}
 						style={styles.img}
 					/>
