@@ -100,7 +100,7 @@ class Login extends Component {
 					<TextInput
 						style={styles.text}
 						value={Email}
-						onChangeText={em => this.setState({ Email: em })}
+						onChangeText={em => this.setState({ Email: em })} //Asignar lo que escribo a la variable
 					/>
 					<Text style={styles.title}>Password</Text>
 					<TextInput
@@ -115,7 +115,7 @@ class Login extends Component {
 						onPress={() => {
 							this.props.navigation.navigate('CreateUser', { ID: 1 });
 							// auth().signInWithEmailAndPassword(Email, Password)
-							// 	.then(usr => this.props.navigation.navigate('CreateUser', { ID: 1 }))
+							// 	.then(usr => this.props.navigation.navigate('CreateUser', { ID: 1 })) //Se devuelve una promesa
 							// 	.catch(err => console.log({ err }));
 						}}
 					>
