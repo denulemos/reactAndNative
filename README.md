@@ -2,6 +2,8 @@
 
 Apuntes basados en el siguiente curso de Youtube: [https://www.youtube.com/watch?v=xQpHaKWHdFI&list=PLUlw6638d2QZFbQfC3sB5mKWJUWr2HEkc&index=14](https://www.youtube.com/watch?v=xQpHaKWHdFI&list=PLUlw6638d2QZFbQfC3sB5mKWJUWr2HEkc&index=14)
 
+Y tambien en el siguiente curso de Udemy (Tiene las instalaciones un poco outdated, recomiendo mas el canal de youtube): [https://www.udemy.com/course/introduccion-a-react-native-con-react-navigation-y-axios/](https://)
+
 Probablemente vaya sumando mas cursos en el futuro (Siempre gratuitos de ser posible 😄).
 
 ## ¿Qué hay en este repositorio? 😕
@@ -13,6 +15,7 @@ La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicac
 * **contador** => Aplicacion basica, un contador de numeros mediante botones.
 * **Posts** => Google Cloud Functions para PostApp (Con Twilio)
 * **PostApp** => Una pequeña aplicacion funcional de prueba (Axios, Hooks). Consta de un log in. Si el login es correcto, se procedera a la pantalla de Registro, de lo contrario, se imprimira un console.log con el error por parte de firebase.
+* **UserViewer =>** En esta aplicacion vamos a usar mucho Axios para consumir una API (randomuser) que traiga una lista de usuarios ficticios, de los cuales, podremos ver el detalle de cada uno si hacemos click en alguno, y para esto, utilizaremos navigation.
 
 **¿Qué es React Native y como funciona?**
 
@@ -28,7 +31,7 @@ La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicac
 * Y referirlo de la siguiente forma: `<Componente/>`
 * Es el uso de componentes a traves de tags
 
-## Instalacion (Windows) 🎉️
+## Instalacion (Windows) y Creación del Proyecto 🎉️
 
 * Instalar NVM para el manejo de versiones
 * Instalar JDK. Configurar JAVA_HOME en las variables de entorno del sistema.
@@ -44,9 +47,9 @@ La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicac
 
 ## Estructura 👀️
 
-* __ tests __ : Carpeta de UnitTesting
-* Carpetas android~~~~ y iOS con el codigo nativo de cada uno.
-* index.js : Entry point de la aplicacion
+* **__ tests __** : Carpeta de UnitTesting
+* Carpetas android y iOS con el codigo nativo de cada uno.
+* **index.js** : Entry point de la aplicacion
 
 ## Componentes 👀️
 
@@ -58,7 +61,7 @@ La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicac
 
 ``   import React from 'react';``
 
-``   import {View, StyleSheet} from 'react-native';``
+``   import {-Según lo que necesitemos-} from 'react-native';``
 
 * Para que el componente pueda ser importado por otros componentes, debe ser exportado
 
