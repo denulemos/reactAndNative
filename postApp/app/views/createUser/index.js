@@ -10,6 +10,9 @@ import {
 } from 'react-native';
 import axios from 'axios';
 
+//IMPORTAMOS HOC
+import printHOC from '../../hoc/print';
+
 //Importamos el nuevo documento con las funciones
 import createUser from '../../api/user';
 
@@ -27,6 +30,11 @@ class CreateUser extends Component{
 	// const [Email, setEmail] = useState('ejemplo@ejemplo.com'); //Inicializar estado
 	// const [Pass, setPass] = useState();
 	// const [Phone, setPhone] = useState('+12345678');
+
+	componentDidMount(){
+		const {print} = this.props;
+		print('createUser');
+	}
 
 	render() {
 		const { Email, Pass, Phone } = this.state;
@@ -115,4 +123,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default CreateUser;
+export default printHOC(CreateUser);

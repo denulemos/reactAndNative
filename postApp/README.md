@@ -2,6 +2,7 @@
 
 * **Tests:** Contenera todos los tests de la aplicacion, la crea el CLI de React native.
 * **Mocks:** Para poner datos de prueba en nuestra aplicacion, como datos falsos para llamadas a la API.
+* **hoc:** Componentes de alto orden (High Order Components). Son funciones que devuelven un componente. Tenemos uno de prueba con una funcion.
 * **App:** Va a contener todo lo relacionado con la aplicacion. Muchos folders.**Esta carpeta contenera los siguientes folders =>**
 * **API:** Configuraciones de librerias, etc.. (Dentro de app)
 * **Assets:** Iconos, estilos, imagenes.
@@ -74,10 +75,21 @@
 
 # Navegacion 🚀️
 
-* Stack => Colocar las pantallas en una pila, podemos ir regresando de pantalla en pantalla.
-* Drower => Es un menu (boton, menu lateral, etc) que tiene una serie de botones que nos posiciones en otra pantalla como tal. Tambien suelen tener un log out en si.
-* Tabs => Es el mas comun de todos, es un menu inferior (android) o superior (iOS), a traves de ese menu, navegamos entre pantallas. 
-* Libreria de **React Navigation**
+* **Stack** => Colocar las pantallas en una pila, podemos ir regresando de pantalla en pantalla.
+* **Drower** => Es un menu (boton, menu lateral, etc) que tiene una serie de botones que nos posiciones en otra pantalla como tal. Tambien suelen tener un log out en si.
+* **Tabs** => Es el mas comun de todos, es un menu inferior (android) o superior (iOS), a traves de ese menu, navegamos entre pantallas.
+* Libreria de **React Navigation** => `npm install @react-navigation/native`
+* Dependencias de React Navigation (Manejar animaciones, gestos, opciones de pantalla, etc..) (**Dependency Hell? 👎 **) => `npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view`
+* Si estas usando iOS se debe correr tambien => `npx pod-install ios`
+* Como vamos a usar la navegacion **stack** => `npm install @react-navigation/stack`
+* Luego de instalar todo esto, es necesario borrar cache del Metro Bundler (Detenido) =>` npm start -- --reset-cache`
+* y linkear la nueva libreria => `npx react-native link`
+* Configuracion navegacion => `app/navigator`
 
+# Loading 🚀️
 
+* Esto funciona con el componente **Activity Indicator** de React native.
+* Es un espiral que da vueltas, y nos puede servir para la insterseccion entre paginas, cargas, llamadas APIs (Espera del response), etc..
+* La configuracion del mismo se encuentra en `app/components/loading`.
+* Recibe un componente para mostrar luego del loading. Tambien recibe un prop que indica si la carga finalizó o no.
 

@@ -17,7 +17,7 @@ import {
 } from 'react-native';
 
 import CreateUser from './app/views/createUser';
-
+import AppStack from './app/navigator/stack';
 import {
   Header,
   LearnMoreLinks,
@@ -28,7 +28,8 @@ import {
 
 class App extends Component{
   render(){
-    return <CreateUser/>;
+    //return <Login/>
+    return <AppStack/>;
   }
 }
 export default App;
