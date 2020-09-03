@@ -11,7 +11,7 @@ Probablemente vaya sumando mas cursos en el futuro (Siempre gratuitos de ser pos
 Hago estos repositorios a manera de "Documentacion" para mi misma (Tambien para practicar el formato .md que utiliza git para los README), y para los demas. La idea es hacer un codigo claro, comentado, y con la documentacion necesaria para entender los pasos para setear todo (React Native for Dummies, Basically).
 La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicaciones cada vez mas complejas con esta tecnologia. Espero que les sirva!.
 
-* **reactNativeGithub** => Primer proyecto base
+* **baseProyect** => Primer proyecto base
 * **contador** => Aplicacion basica, un contador de numeros mediante botones.
 * **Posts** => Google Cloud Functions para PostApp (Con Twilio)
 * **PostApp** => Una pequeña aplicacion funcional de prueba (Axios, Hooks). Consta de un log in. Si el login es correcto, se procedera a la pantalla de Registro, de lo contrario, se imprimira un console.log con el error por parte de firebase.

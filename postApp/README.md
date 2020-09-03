@@ -20,10 +20,10 @@
 * Importamos axios => `import axios from 'axios'`.
 * Volver a correr Metro Bundler.
 * Ejemplo axios con Pokemon Go RapidApi
-  
+
   ```
   componentDidMount(){
-  
+
   //CONSTANTES
   const _path = 'https://pokemon-go1.p.rapidapi.com/pokemon_stats.json';
   const _pathInst = 'https://pokemon-go1.p.rapidapi.com/'; //URL Base, la API puede traer varias otras cosas mas alla de pokemones
@@ -32,28 +32,28 @@
   "x-dapidapi-key": "cd14fb2c68msh0d4d25d53c61133p1b6c38jsn5e7d7fb7a9f7",
   "useQueryString" : true,
   };
-  
+
   //PETICIONES GET
   axios.get(_path ,{
   headers: _headers
   //Esto devuelve una promise
   }).then(res1 => console.log({res1}));
-  
-  
+
+
   //OTRA SINTAXIS DE GET
   axios({
   method: 'get', //Si dejo esto vacio, por defecto, es GET
   headers: _headers,
   url: _path
   }).then(res2 => console.log({res2}));
-  
+
   //SINTAXIS MAS RECOMENDADA, con instancias de Axios
   //axios.create nos crea una instancia de axios
   const instAxios = axios.create({
   baseURL: _pathInst, //Path base
   headers: _headers
   });
-  
+
   instAxios({
   method: 'get',
   url: 'pokemon_stats.json' //hago que la url base apunte acá
@@ -79,7 +79,7 @@
 * **Drower** => Es un menu (boton, menu lateral, etc) que tiene una serie de botones que nos posiciones en otra pantalla como tal. Tambien suelen tener un log out en si.
 * **Tabs** => Es el mas comun de todos, es un menu inferior (android) o superior (iOS), a traves de ese menu, navegamos entre pantallas.
 * Libreria de **React Navigation** => `npm install @react-navigation/native`
-* Dependencias de React Navigation (Manejar animaciones, gestos, opciones de pantalla, etc..) (**Dependency Hell? 👎 **) => `npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view`
+* Dependencias de React Navigation (Manejar animaciones, gestos, opciones de pantalla, etc..) (**Dependency Hell? 👎**) => `npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view`
 * Si estas usando iOS se debe correr tambien => `npx pod-install ios`
 * Como vamos a usar la navegacion **stack** => `npm install @react-navigation/stack`
 * Luego de instalar todo esto, es necesario borrar cache del Metro Bundler (Detenido) =>` npm start -- --reset-cache`
@@ -92,4 +92,3 @@
 * Es un espiral que da vueltas, y nos puede servir para la insterseccion entre paginas, cargas, llamadas APIs (Espera del response), etc..
 * La configuracion del mismo se encuentra en `app/components/loading`.
 * Recibe un componente para mostrar luego del loading. Tambien recibe un prop que indica si la carga finalizó o no.
-

@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   Platform,
@@ -15,7 +15,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import {createStackNavigator, createAppContainer} from '@react-navigation/native';
+
 import {
   Header,
   LearnMoreLinks,
@@ -23,62 +23,17 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { createStackNavigator , createAppContainer} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+
+import AppStack from './src/navigator/stack';
 
 //const axios = require('axios');
 
-class HomeScreen extends Component {
-  constructor(props){
-    super(props);
-    this.state ={
-      user:null
-    };
-
-    //BIND
-    this.getUserData = this.getUserData.bind(this);
-  }
-
-  componentDidMount(){
-    this.getUserData();
-  }
-
-  getUserData(){
-    axios.get('https://randomuser.me/api/').then((response) => {
-      if (response && response.data && response.data.results){
-        if(response.data.results.length > 0){
-          this.setState({
-            user: response.data.results[0]
-          });
-        }
-      }
-    }).catch(function (error){
-      console.log(error);
-    });
-  }
-
+class App extends Component{
   render(){
-    return(
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      {
-        this.state.user !== null && <Text>{this.state.user.name.title}</Text>
-      }
-
-      <TouchableOpacity
-      onPress={
-        () =>{
-          console.log(this.props.navigation);
-          this.props.navigation.navigate('Settings')
-        }
-      }></TouchableOpacity>
-
-      <Text>Go to Settings</Text>
-   
-    </View>
-  ) }
-}
-
-class SettingsScreen extends React.Component{
-  render(){
-    
+    //return <Login/>
+    return <AppStack/>;
   }
 }
 export default App;
