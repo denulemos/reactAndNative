@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import {
   View,
   Text,
+  Platform,
   ActivityIndicator,
   FlatList,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import {styles} from './styles';
 import UserService from '../services/UserService';
@@ -65,15 +67,29 @@ export default class UserList extends Component {
           data={this.state.users}
           renderItem={({item}) => {
             // console.log(item)
-            return (<View style= {[styles.itemContainer, item.gender == 'male' ? styles.male : styles.female]}> 
-              <Image style= {styles.itemImage} 
-              source={{uri: item.picture.medium}}
-              />
-              <View style={{flexDirection: 'column'}}> 
-          <Text style={styles.itemTitle}>{item.name.title} {item.name.first} {item.name.last}</Text> 
-              <Text style={[styles.itemTitle, {fontSize: 13}]}>Click para mas detalles :) </Text> 
-              </View>
-              </View>)
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  this.props.navigation.navigate('UserDetails', {user: item},);
+                }}
+                style={[
+                  styles.itemContainer,
+                  item.gender == 'male' ? styles.male : styles.female,
+                ]}>
+                <Image
+                  style={styles.itemImage}
+                  source={{uri: item.picture.medium}}
+                />
+                <View style={{flexDirection: 'column'}}>
+                  <Text style={styles.itemTitle}>
+                    {item.name.title} {item.name.first} {item.name.last}
+                  </Text>
+                  <Text style={[styles.itemTitle, {fontSize: 13}]}>
+                    Click para mas detalles :){' '}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            );
           }}
         />
       </View>

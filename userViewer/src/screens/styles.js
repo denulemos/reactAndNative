@@ -20,7 +20,25 @@ export const styles = StyleSheet.create({
     height: 50,
     borderRadius: 0,
   },
-
+  itemText: {
+    fontSize: 14,
+    textAlign: 'center',
+    marginVertical: 5,
+    color: 'white'
+  },
+ 
+  itemImageDet: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    marginVertical: 10
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
   male: {
     backgroundColor: '#778beb',
   },

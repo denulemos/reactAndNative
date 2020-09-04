@@ -11,8 +11,8 @@ function AppStack() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator>
-				<Stack.Screen name="HomeScreen" component={Routes.UserList} options= {{headerShown: false}}/>
-				<Stack.Screen name="SettingsScreen" component={Routes.UserDetails} options= {{headerShown: false}}/>
+				<Stack.Screen name="UserList" component={Routes.UserList} options= {{headerShown: false}}/>
+				<Stack.Screen name="UserDetails" component={Routes.UserDetails} options= {{headerShown: false}}/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
