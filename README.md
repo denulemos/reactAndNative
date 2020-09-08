@@ -47,7 +47,7 @@ La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicac
 
 ## Inicializacion con EXPO
 Expo es un cliente tambien, para desarollar en React Native, pero que nos facilita mucho algunos procesos de configuracion nativos. 
-* Instalamos el cliente de expo de manera global -> `npm i  -g expocli`
+* Instalamos el cliente de expo de manera global -> `npm i  -g expo-cli`
 * Inicializamos un proyecto expo -> `expo init "nombreproyecto"` 
 * Corremos el proyecto -> `npm start` o `expo start` 
 
