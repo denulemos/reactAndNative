@@ -123,17 +123,3 @@ shouldComponentUpdate(nextProps, nextState) {
 
 * Tambien se puede declarar de forma "anonima" de la siguiente manera => `<> </>`
 
-## Estructura del Proyecto 🚀️ (PostApp)
-
-* **Tests:** Contenera todos los tests de la aplicacion, la crea el CLI de React native.
-* **Mocks:** Para poner datos de prueba en nuestra aplicacion, como datos falsos para llamadas a la API.
-* **App:** Va a contener todo lo relacionado con la aplicacion. Muchos folders.
-  **Esta carpeta contenera los siguientes folders =>**
-* **API:** Configuraciones de librerias, etc.. (Dentro de app)
-* **Assets:** Iconos, estilos, imagenes.
-* **Components**: Componentes reusables de la aplicacion.
-* **Settings:** Configs. de la aplicacion. Identificadores de selects, etc..
-* **Navigator:** Configuracion de react navigation.
-* **Libs:** Archivos JS con funciones custom.
-* **Views:** Cada modulo, o pantallas para trabajar. (Login, Home, etc..).
-* **Store:** Configuracion de redux.
