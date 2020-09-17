@@ -45,11 +45,26 @@ La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicac
 * `npm i prop-types` => Instalar libreria prop-types, para manejar tipos de datos
 * Si queres usar este mismo repositorio, recomiendo instalar el SDK 29, de lo contrario, no se podra levantar el proyecto.
 
-## Estructura 👀️
+## Estructura Base 👀️
 
 * **__ tests __** : Carpeta de UnitTesting
 * Carpetas android y iOS con el codigo nativo de cada uno.
 * **index.js** : Entry point de la aplicacion
+
+## Estructura del Proyecto 🚀️ (PostApp)
+
+* **Tests:** Contenera todos los tests de la aplicacion, la crea el CLI de React native.
+* **Mocks:** Para poner datos de prueba en nuestra aplicacion, como datos falsos para llamadas a la API.
+* **App:** Va a contener todo lo relacionado con la aplicacion. Muchos folders.
+  **Esta carpeta contenera los siguientes folders =>**
+* **API:** Configuraciones de librerias, etc.. (Dentro de app)
+* **Assets:** Iconos, estilos, imagenes.
+* **Components**: Componentes reusables de la aplicacion.
+* **Settings:** Configs. de la aplicacion. Identificadores de selects, etc..
+* **Navigator:** Configuracion de react navigation.
+* **Libs:** Archivos JS con funciones custom.
+* **Views:** Cada modulo, o pantallas para trabajar. (Login, Home, etc..).
+* **Store:** Configuracion de redux.
 
 ## Componentes 👀️
 
@@ -73,13 +88,21 @@ La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicac
   Montaje => Actualizacion => Desmontaje.
   Constructor => **ComponentwillMount** (Util para, por ejemplo, obtener la medida de la pantalla antes de cualquier otra cosa) *DEPRECADO 👎*  UNSAFE => **Render** (no puedo hacer this.setState en el mismo, ya que setState llama al render, y se daria un loop infinito) => **ComponentDidMount** (Util para peticiones asincronas, aunque puede llevar a problemas de performance ya que debe llamar de vuelta al Render(), aca si se puede usar el setState).
 * El componente padre NO termina de renderizarse hasta que no se terminen de renderizar todos sus hijos.
-
-  ## Ciclo de vida de Actualizacion 👀️
+  
+  ## Ciclo de vida del Componente 👀️
 * **componentWillReceiveProps** : Se ejecuta cuando hay actualizacion de alguna prop, o se modifica alguna prop.
 * **shouldComponentUpdate:** Nos permite decidir si debemos ejecutar de vuelta, o no, el render. Muestra con que valores se va a realizar la actualizacion.
 * **componentWillUpdate:** Ya esta a punto de correr el render(). *DEPRECADO*  👎 UNSAFE
 * **componentDidUpdate:** Luego del renderizado. *DEPRECADO 👎 * UNSAFE
 * **componentWillUnmount:** El componente esta a punto de ser desmontado de la pantalla. No existe un **didUnmount** ya que el componente no existe mas, no se puede hacer mas nada con el mismo.
+
+## Hooks - UseEffect 👀️
+
+En los componentes de funcion, existe un Hook que nos permite acceder a propiedades de los ciclos de vida del componente (cuando se monta, updatea y se esta a punto de desmontar el componente), este Hook es **useEffect**, es como decir que vamos a usar un "efecto colateral", cualquiera que modifique que algo dentro del componente (O Side Effects).
+
+El uso del useEffect se puede ver en `postApp/app/views/posts/index.js`.
+
+* UseEffect recibe una funcion como parametro. Pero si no recibe nada, por defecto, actua como un **componentDidMount**.
 
 ## Pure Component 👀️
 
@@ -116,17 +139,5 @@ shouldComponentUpdate(nextProps, nextState) {
 
 * Tambien se puede declarar de forma "anonima" de la siguiente manera => `<> </>`
 
-## Estructura del Proyecto 🚀️ (PostApp)
 
-* **Tests:** Contenera todos los tests de la aplicacion, la crea el CLI de React native.
-* **Mocks:** Para poner datos de prueba en nuestra aplicacion, como datos falsos para llamadas a la API.
-* **App:** Va a contener todo lo relacionado con la aplicacion. Muchos folders.
-  **Esta carpeta contenera los siguientes folders =>**
-* **API:** Configuraciones de librerias, etc.. (Dentro de app)
-* **Assets:** Iconos, estilos, imagenes.
-* **Components**: Componentes reusables de la aplicacion.
-* **Settings:** Configs. de la aplicacion. Identificadores de selects, etc..
-* **Navigator:** Configuracion de react navigation.
-* **Libs:** Archivos JS con funciones custom.
-* **Views:** Cada modulo, o pantallas para trabajar. (Login, Home, etc..).
-* **Store:** Configuracion de redux.
+
