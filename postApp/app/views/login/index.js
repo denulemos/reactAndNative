@@ -114,18 +114,23 @@ class Login extends Component {
 						<Button
 							title="Login"
 							action={() => {
-								//this.props.navigation.navigate('CreateUser', { ID: 1 });
-								auth()
-									.signInWithEmailAndPassword(Email, Password)
-									.then(usr =>
-										this.props.navigation.navigate(
-											'CreateUser',
-											{ ID: 1 },
-										),
-									) //Navegamos a CreateUser si el login es correcto
-									.catch(err => console.log({ err }));
+								this.props.navigation.navigate('CreateUser', { ID: 1 });
+								// auth()
+								// 	.signInWithEmailAndPassword(Email, Password)
+								// 	.then(usr =>
+								// 		this.props.navigation.navigate(
+								// 			'CreateUser',
+								// 			{ ID: 1 },
+								// 		),
+								// 	) //Navegamos a CreateUser si el login es correcto
+								// 	.catch(err => console.log({ err }));
 							}}
 						/>
+
+						<TouchableOpacity
+						onPress={() => this.props.navigation.navigate('CreateUser')}>
+							<Text style={{color: '#FFF', fontWeight: 'bold', marginTop: 10}}>Crear una Cuenta</Text>
+						</TouchableOpacity>
 					</View>
 				</View>
 			</Loading>
