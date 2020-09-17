@@ -45,6 +45,19 @@ La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicac
 * `npm i prop-types` => Instalar libreria prop-types, para manejar tipos de datos
 * Si queres usar este mismo repositorio, recomiendo instalar el SDK 29, de lo contrario, no se podra levantar el proyecto.
 
+## Inicializacion con EXPO
+Expo es un cliente tambien, para desarollar en React Native, pero que nos facilita mucho algunos procesos de configuracion nativos. 
+* Instalamos el cliente de expo de manera global -> `npm i  -g expo-cli`
+* Inicializamos un proyecto expo -> `expo init "nombreproyecto"` 
+* Corremos el proyecto -> `npm start` o `expo start` 
+
+# Troubleshooting
+Cuando se intenta inicializar una Virtual Device en AVD (desde Android Studio, en este caso), puede que hayan problemas con la instalacion de un complemento HAXM propio de Intel. (U otros problemas con la misma virtualizacion del dispositivo),
+* Si se tiene un procesador AMD, se puede seguir la siguiente documentacion (https://android-developers.googleblog.com/2018/07/android-emulator-amd-processor-hyper-v.html).
+* Si se tiene un procesador Intel, desactivar Hyper-V desde las features de Windows y habilitar la Virtualizacion desde la BIOS del sistema. Si el problema persiste, instalar HAXM no desde Android Studio, si no desde un instalador aparte (https://github.com/intel/haxm/releases/tag/v7.6.1).
+
+Si al momento de correr el proyecto con 'react-native run-android' nos advierte que "No tenemos el entorno Android configurado" (y estamos seguros que, o tenemos un celular conectado o un emulador funcionando), recomiendo abrir el proyecto nativo en Android Studio y buildear Gradle desde ahi. 
+
 ## Estructura Base 👀️
 
 * **__ tests __** : Carpeta de UnitTesting
@@ -138,6 +151,4 @@ shouldComponentUpdate(nextProps, nextState) {
 ```
 
 * Tambien se puede declarar de forma "anonima" de la siguiente manera => `<> </>`
-
-
 
