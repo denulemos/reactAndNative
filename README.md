@@ -153,5 +153,44 @@ shouldComponentUpdate(nextProps, nextState) {
 
 * Tambien se puede declarar de forma "anonima" de la siguiente manera => `<> </>`
 
+# ¿Hay un usuario logeado?
 
+```javascript
+componentDidMount(){
+// Hay una sesion iniciada?
+auth()
+.onAuthStateChanged((usr) => {
+console.log({usr});
+if (usr){
+//Si esta logeado nos manda a otra pontalla
+this.setState(
+() => ({loading : false}),
+() => this.props.navigation.navigate("Post")
+)
+} else {
+//Si no existe es null
+this.setState({loading : false});
+}
+})
+}
+```
+
+# Listas con metodo Map
+
+Esto es muy util por si queremos poner un elemento por cada objeto de un array
+Por ejemplo, tenemos un array llamado `arr`
+Genera un boton con el atributo 'name' de cada elemento del array.
+
+```javascript
+<ScrollView>
+{
+arr.map(i => {
+<Button 
+title = {i.name}
+action = {() => console.log(i.name)}
+/>
+))
+}
+</ScrollView>
+```
 

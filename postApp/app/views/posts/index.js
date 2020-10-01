@@ -9,28 +9,25 @@ import {styles} from './styles';
 
 const Posts = () => {
 
-    const [state, setState] = useState(0);
-
-    //USO DEL USEEFFECT 
-    //Recibe un parametro, pero si no recibe nada, por defecto, funciona como un ComponentDidMount
-    useEffect(() => {
-        console.log('Update');
-    });
-
-    useEffect(() => {
-        console.log('Mount');
-    }, []);
-
-    useEffect(() => {
-        console.log('Update State');
-    },[state] )
+    const arr =[
+        {name : 'lala'},
+        {name : 'lala'},
+        {name : 'lala'},
+        {name : 'lala'},
+        {name : 'lala'},
+        {name : 'lala'},
+        {name : 'lala'},
+        {name : 'lala'},
+        {name : 'lala'},
+    ]
+    //const [state, setState] = useState(0);
 
     
     return (
         <View style={styles.container}>
-            <Button title="Usar" action = {() => {
-setState(1)
-            }} />
+           <Button title="count" action={() => {
+               setCount(1 + count)
+           }} />
         </View>
     );
 }

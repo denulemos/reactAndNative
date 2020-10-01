@@ -24,9 +24,27 @@ class Login extends Component {
 		this.state = {
 			Email: null,
 			Password: null,
+			loading: true
 		};
 	}
 
+	componentDidMount(){
+		// Hay una sesion iniciada?
+		auth()
+		.onAuthStateChanged((usr) => {
+			console.log({usr});
+			if (usr){
+				//Si esta logeado nos manda a otra pontalla
+this.setState(
+	() => ({loading : false}), 
+	() => this.props.navigation.navigate("Posts")
+)
+			} else {
+				//Si no existe es null
+this.setState({loading : false});
+			}
+		})
+	}
 	// componentDidMount() {
 
 	// 	//USAMOS LA FUNCION DE HOC
@@ -54,9 +72,9 @@ class Login extends Component {
 	// }
 
 	render() {
-		const { Email, Password } = this.state; //Traemos las inicializaciones desde el state
+		const { Email, Password , loading} = this.state; //Traemos las inicializaciones desde el state
 		return (
-			<Loading loading={true}>
+			<Loading loading={loading}>
 				<View style={styles.container}>
 					<View style={styles.subcontainer}>
 						<Image
@@ -67,12 +85,7 @@ class Login extends Component {
 					</View>
 
 					<View style={styles.subcontainer}>
-						{/* <Text style={styles.title}>Email</Text>
-						<TextInput
-							style={styles.text}
-							value={Email}
-							onChangeText={em => this.setState({ Email: em })} //Asignar lo que escribo a la variable
-						/> */}
+					
 
 						<Input
 							title="Email"
@@ -81,15 +94,7 @@ class Login extends Component {
 							onChangeText:em => this.setState({ Email: em }),
 							}}
 						/>
-						{/* <Text style={styles.title}>Password</Text>
-						<TextInput
-							style={styles.text}
-							value={Password}
-							onChangeText={psw =>
-								this.setState({ Password: psw })
-							}
-							secureTextEntry
-						/> */}
+					
 						<Input
 							title="Password"
 							custom={{
@@ -99,17 +104,7 @@ class Login extends Component {
 								secureTextEntry: true,
 							}}
 						/>
-						{/* <TouchableOpacity
-						style={styles.btn}
-						onPress={() => {
-							//this.props.navigation.navigate('CreateUser', { ID: 1 });
-							 auth().signInWithEmailAndPassword(Email, Password)
-							 	.then(usr => this.props.navigation.navigate('CreateUser', { ID: 1 })) //Navegamos a CreateUser si el login es correcto
-							 	.catch(err => console.log({ err }));
-						}}
-					>
-						<Text style={styles.title}>Login</Text>
-					</TouchableOpacity> */}
+					
 
 						<Button
 							title="Login"

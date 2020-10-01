@@ -42,6 +42,20 @@ function AppStack() {
 						headerLeft: () => getButton(nav),
 					})}
 				/>
+					<Stack.Screen
+					name="Posts"
+					component={Routes.Posts}
+					options={(nav) => ({ //Options es un prop al que le puedo mandar un objeto, o una funcion que retorne un objeto. Esa funcion recibe como parametros props de la navegacion
+						headerStyle: {
+							backgroundColor: 'pink',
+						},
+						headerTintColor: 'white',
+						headerTitleStyle: {
+							fontWeight: 'bold',
+						},
+						headerLeft: () => getButton(nav),
+					})}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

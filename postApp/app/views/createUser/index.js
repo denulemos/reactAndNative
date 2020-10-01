@@ -9,7 +9,7 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
-
+import styles from './styles';
 //IMPORTAMOS HOC
 import printHOC from '../../hoc/print';
 
@@ -26,10 +26,7 @@ class CreateUser extends Component{
 		};
 	}
 
-	//Valor del estado y la funcion que modificara al estado
-	// const [Email, setEmail] = useState('ejemplo@ejemplo.com'); //Inicializar estado
-	// const [Pass, setPass] = useState();
-	// const [Phone, setPhone] = useState('+12345678');
+
 
 	componentDidMount(){
 		const {print} = this.props;
@@ -80,7 +77,13 @@ class CreateUser extends Component{
 							}
 
 							//Hacemos llamada POST a la API con el objeto user y resolvemos la promise para ver que devuelve el server
-							createUser.post(usr).then(rows => console.log({rows}));
+							//Promise
+							createUser.post(usr).then(rows => {
+								auth().signInWithEmailAndPassword(Email, Pass).then((user) => {
+									console.log({user, usr});
+									this.props.navigation.navigate('Posts') //Navegamos hacia Post
+								}).catch(err => console.log({err}));
+							});
 						}
 					}>
 					<Text style={styles.title}>Submit</Text>
@@ -90,37 +93,6 @@ class CreateUser extends Component{
 	}
 }
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1, //Ocupe toda la pantalla
-		backgroundColor: '#6F1E51',
-		paddingVertical: 20,
-		paddingHorizontal: 30,
-	},
-	title: {
-		color: '#FFF',
-		fontSize: 16,
-		fontWeight: 'bold',
-		marginVertical: 10,
-	},
-	text: {
-		borderWidth: 1,
-		borderColor: '#FFF',
-		height: 45, //VALORES EN PIXELES
-		width: '100%',
-		paddingHorizontal: 10,
-		backgroundColor: '#FFF',
-	},
-	btn: {
-		borderWidth: 1,
-		borderColor: '#FFF',
-		height: 45, //VALORES EN PIXELES
-		width: '100%',
-		marginTop: 100,
-		backgroundColor: '#B33771',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-});
+
 
 export default printHOC(CreateUser);
