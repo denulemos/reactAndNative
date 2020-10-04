@@ -88,13 +88,58 @@ La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicac
   Montaje => Actualizacion => Desmontaje.
   Constructor => **ComponentwillMount** (Util para, por ejemplo, obtener la medida de la pantalla antes de cualquier otra cosa) *DEPRECADO 👎*  UNSAFE => **Render** (no puedo hacer this.setState en el mismo, ya que setState llama al render, y se daria un loop infinito) => **ComponentDidMount** (Util para peticiones asincronas, aunque puede llevar a problemas de performance ya que debe llamar de vuelta al Render(), aca si se puede usar el setState).
 * El componente padre NO termina de renderizarse hasta que no se terminen de renderizar todos sus hijos.
+* Crear un componente -> `const Hola = () => Hola, soy denu! Y soy un componente ;`
   
   ## Ciclo de vida del Componente 👀️
 * **componentWillReceiveProps** : Se ejecuta cuando hay actualizacion de alguna prop, o se modifica alguna prop.
+
+```
+componentWillReceiveProps() {
+    console.log('Props');
+  }
+```
+
+* **componentWillMount**: Se ejecuta antes del montaje del componente. Esto sera deprecado a futuro.
+
+```javascript
+componentWillMount() {
+    console.log('Antes del montaje');
+  }
+```
+
+* **componentDidMount** : Se ejecuta luego de que el componente fue renderizado.
+
+```javascript
+componentDidMount() {
+    console.log('Montado');
+  }
+```
+
 * **shouldComponentUpdate:** Nos permite decidir si debemos ejecutar de vuelta, o no, el render. Muestra con que valores se va a realizar la actualizacion.
-* **componentWillUpdate:** Ya esta a punto de correr el render(). *DEPRECADO*  👎 UNSAFE
-* **componentDidUpdate:** Luego del renderizado. *DEPRECADO 👎 * UNSAFE
+
+```
+shouldComponentUpdate(nextProps, nextState) {
+    console.log({nextProps, nextState});
+    return true;
+  }
+```
+
+* **componentWillUpdate:** Ya esta a punto de correr el render(). Nos ayuda a setear valores globales justo antes del render.  *DEPRECADO*  👎 UNSAFE
+
+```
+componentWillUpdate() {
+    console.log('Component will update');
+  }
+```
+
+* **componentDidUpdate:** Luego del renderizado.*DEPRECADO 👎 * UNSAFE
 * **componentWillUnmount:** El componente esta a punto de ser desmontado de la pantalla. No existe un **didUnmount** ya que el componente no existe mas, no se puede hacer mas nada con el mismo.
+
+```
+componentWillUnmount(){
+    console.log("Will Unmount");
+  }
+```
 
 ## Hooks - UseEffect 👀️
 

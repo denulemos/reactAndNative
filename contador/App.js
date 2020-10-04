@@ -1,10 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+
 
 import React, {Component , PureComponent} from 'react';
 import {
@@ -17,13 +11,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
 import Button from './componentes/button';
 import ActionButtons from './componentes/actionButtons';
@@ -35,37 +22,15 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      //Inicializamos contador
       counter: 0,
     };
 
     console.log('Constructor');
 
-    //setState vuelve a renderizar, refresca la pantalla con lo nuevo
-    //Buena costumbre, es bindear todas las funciones que usen this, para que no se pierda el contexto
     this.suma = this.suma.bind(this);
     this.resta = this.resta.bind(this);
     this.reset = this.reset.bind(this);
     this.sumarDiez = this.sumarDiez.bind(this);
-  }
-
-  //Queremos ejecutar el render? Sin PureComponent
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   const {counter} = this.state;
-  //   //Si el valor a cambiar es el mismo valor del actual, no renderizar
-  //   if (nextState.counter === counter) return false;
-  //   //De lo contrario, renderizar
-  //   return true;
-  // }
-
-  //Se ejecuta antes del montaje del componente. Esto se va a deprecar a futuro.
-  componentWillMount() {
-    console.log('Antes del montaje');
-  }
-
-  //Se ejecuta luego del renderizado de la pantalla
-  componentDidMount() {
-    console.log('Montado');
   }
 
   sumarDiez(){

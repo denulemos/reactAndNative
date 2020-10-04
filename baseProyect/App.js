@@ -33,7 +33,7 @@ const Hola = () => <Text>Hola, soy denu! Y soy un componente </Text>;
 //class App extends Component
 const App: () => React$Node = () => {
   return (
-    //O el metodo render()
+   
 
     <View
       style={styles.container}>
