@@ -1,5 +1,6 @@
 import React , {useEffect} from 'react';
 import {
+    ScrollView,
     View
 } from 'react-native';
 
@@ -25,9 +26,13 @@ const Posts = () => {
     
     return (
         <View style={styles.container}>
-           <Button title="count" action={() => {
-               setCount(1 + count)
-           }} />
+           <ScrollView>
+               {arr.map (i => (
+                   <Button title={arr.name}
+                   action={() => console.log(arr.name)}
+                   />
+               ))}
+           </ScrollView>
         </View>
     );
 }
