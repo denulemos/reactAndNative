@@ -41,6 +41,25 @@ La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicac
 * Podemos crear componentes de la siguiente forma: `const Componente = <p> Hola! </p>`
 * Y referirlo de la siguiente forma: `<Componente/>`
 * Es el uso de componentes a traves de tags
+* Siempre debe tener un solo return, devolver un solo elemento
+
+JSX Valido
+
+```
+<div>
+  <p>Paragraph One</p>
+  <p>Paragraph Two</p>
+  <p>Paragraph Three</p>
+</div>
+```
+
+JSX Invalido ya que devuelve mas de un elemento
+
+```
+<p>Paragraph One</p>
+<p>Paragraph Two</p>
+<p>Paragraph Three</p>
+```
 
 ## Instalacion (Windows) y Creación del Proyecto 🎉️
 
@@ -100,7 +119,7 @@ La idea es que este repositorio vaya creciendo a medida que voy haciendo aplicac
   Constructor => **ComponentwillMount** (Util para, por ejemplo, obtener la medida de la pantalla antes de cualquier otra cosa) *DEPRECADO 👎*  UNSAFE => **Render** (no puedo hacer this.setState en el mismo, ya que setState llama al render, y se daria un loop infinito) => **ComponentDidMount** (Util para peticiones asincronas, aunque puede llevar a problemas de performance ya que debe llamar de vuelta al Render(), aca si se puede usar el setState).
 * El componente padre NO termina de renderizarse hasta que no se terminen de renderizar todos sus hijos.
 * Crear un componente -> `const Hola = () => Hola, soy denu! Y soy un componente ;`
-  
+
   ## Ciclo de vida del Componente 👀️
 * **componentWillReceiveProps** : Se ejecuta cuando hay actualizacion de alguna prop, o se modifica alguna prop.
 
@@ -171,7 +190,7 @@ El uso del useEffect se puede ver en `postApp/app/views/posts/index.js`.
 ` useEffect(() => {   console.log('Mount'); }, []);`
 
 * Update de un state
-  
+
   `useEffect(() => {   console.log('Update State'); }, [state]);`
 
 ## Pure Component 👀️
@@ -209,7 +228,7 @@ shouldComponentUpdate(nextProps, nextState) {
 
 * Tambien se puede declarar de forma "anonima" de la siguiente manera => `<> </>`
 
-# ¿Hay un usuario logeado?
+## ¿Hay un usuario logeado?
 
 ```javascript
 componentDidMount(){
@@ -348,10 +367,10 @@ Es una plataforma que, entre todas las herramientas que puede dar, nos puede dar
 * Importamos axios => `import axios from 'axios'`.
 * Volver a correr Metro Bundler.
 * Ejemplo axios con Pokemon Go RapidApi
-  
+
   ```
   componentDidMount(){
-  
+
   //CONSTANTES
   const _path = 'https://pokemon-go1.p.rapidapi.com/pokemon_stats.json';
   const _pathInst = 'https://pokemon-go1.p.rapidapi.com/'; //URL Base, la API puede traer varias otras cosas mas alla de pokemones
@@ -360,28 +379,28 @@ Es una plataforma que, entre todas las herramientas que puede dar, nos puede dar
   "x-dapidapi-key": "cd14fb2c68msh0d4d25d53c61133p1b6c38jsn5e7d7fb7a9f7",
   "useQueryString" : true,
   };
-  
+
   //PETICIONES GET
   axios.get(_path ,{
   headers: _headers
   //Esto devuelve una promise
   }).then(res1 => console.log({res1}));
-  
-  
+
+
   //OTRA SINTAXIS DE GET
   axios({
   method: 'get', //Si dejo esto vacio, por defecto, es GET
   headers: _headers,
   url: _path
   }).then(res2 => console.log({res2}));
-  
+
   //SINTAXIS MAS RECOMENDADA, con instancias de Axios
   //axios.create nos crea una instancia de axios
   const instAxios = axios.create({
   baseURL: _pathInst, //Path base
   headers: _headers
   });
-  
+
   instAxios({
   method: 'get',
   url: 'pokemon_stats.json' //hago que la url base apunte acá
@@ -420,5 +439,3 @@ Es una plataforma que, entre todas las herramientas que puede dar, nos puede dar
 * Es un espiral que da vueltas, y nos puede servir para la insterseccion entre paginas, cargas, llamadas APIs (Espera del response), etc..
 * La configuracion del mismo se encuentra en `app/components/loading`.
 * Recibe un componente para mostrar luego del loading. Tambien recibe un prop que indica si la carga finalizó o no.
-  
-
