@@ -1,6 +1,6 @@
 # React 🚀️
 
-Apuntes basados en SoloLearn.
+Es una libreria de JS para Front-End.
 
 ## ¿Qué es el desarrollo Front-End?
 
@@ -65,14 +65,16 @@ npm start
 
 ### Estructura del proyecto
 
-* public -> Contiene todo lo que la aplicacion va a mostrar al cliente, como el `index.html` que es el template de nuestra pagina.
-* src -> Contiene todo el JS, CSS e imagenes que van a ser compilados en el `index.html`
+* public -> Contiene todo lo que la aplicacion va a mostrar al cliente, como el `index.html` que es el template de nuestra pagina. Son archivos estaticos.
+* src -> Contiene todo el JS, CSS e imagenes que van a ser compilados en el `index.html`. Es el ❤️ de la app.
 
 **¿Cómo se compila todo dentro de un solo archivo bundle?**
 Se usa un **File Loader**. En el caso de React, se usa **Webpack**, crea un bundle que contiene a todos los archivos que necesitan ser "bundleados", creando un solo HTML con todo.
 
 * index.js -> Es el entrypoint de la aplicacion, tiene un metodo llamado `ReactDOM.render()` que busca al elemento cuyo id es "root" en el HTML e inserta todo el contenido ahi.
-* App.js -> Es el componente main de la aplicacion que sera renderizado en el DOM.
+* package.json -> Declara las dependencias que iran en node_modules. El nombre de la app, la version y los scripts. 
+* node_modules -> Todas las dependencias. Pesa mucho, es ignorada por git.
+* App.js -> Es el componente main de la aplicacion que sera renderizado en el DOM. El primer nivel de nuestro virtual DOM.
 
 Para cambiar el texto que nos viene de bienvenida al crear el proyecto, tenemos que ir al archivo `src/index.js`, por ejemplo, con lo siguiente ->
 
@@ -138,7 +140,11 @@ Usamos el `setInterval` para llamar a la funcion `show()` que renderiza un eleme
 
 ## Virtual DOM
 
-Para que React pueda actualizar solo lo necesario de una pagina, se usa el **Virtual DOM** que es una representacion del DOM. Cuando un elemento cambia, primero se actualiza el VDOM, esto es un proceso muy rapido. Luego, React compara al VDOM con el estado anterior y solo aplica los cambios necesarios para que el DOM ya este en el estado actual.
+Para que React pueda actualizar solo lo necesario de una pagina, se usa el **Virtual DOM** que es una representacion del DOM.
+
+Cuando un elemento cambia, primero se actualiza el VDOM, esto es un proceso muy rapido. Luego, React compara al VDOM con el estado anterior y solo aplica los cambios necesarios para que el DOM ya este en el estado actual.
+
+Todo sale de `app.js`, que contiene X cantidad de componentes, y estos poseen Y cantidad de componentes. Si cambiamos algo del `app.js`, se actualiza todo, pero si cambiamos un componente X, solo se actualizara ese componente y sus hijos, nada más. Mas arriba en la jerarquia de componentes, mas refrezcos habrá, siempre de manera descendente, nunca ascendente.
 
 # Componentes 👀️
 
@@ -147,6 +153,11 @@ Los componentes nos permiten separar la pagina en distintas partes reusables. Po
 ![componentes](./assets/componentes.jpg)
 
 Cada parte numerada es un componente separado. Esto nos permite hacer **Separation of concerns**, un principio en programacion que dice que cada problema debe ser separado en piezas individuales.
+
+* Los componentes SIEMPRE deben empezar en mayuscula.
+* Los componentes necesitan ser exportados para ser importados por otros componentes. Mediante `export default App;` (ideal cuando tengamos que englobar un componente con otro) o `export default function App()`, solo puede haber un export default, si tengo 2 componentes dentro de un archivo, y ya tengo uno exportado con default, el otro será simplemente `export function App2()`
+* Cuando exportamos un componente SIN el default, al momento de importarlo, tenemos que rodearlo de llaves
+  `import {HolaMundo} from './componentes`
 
 ### Componentes de Función
 
@@ -199,6 +210,7 @@ class Hello extends React.Component {
 # Props 👀️
 
 Los componentes de Funcion pueden aceptar argumentos, como las funciones de JS. A estas se le dicen `props` y representan a un objeto.
+Podemos mandar props entre componentes. 
 Por ejemplo, si queremos usar props en nuestro componente `Hello` ->
 
 ```
@@ -253,6 +265,17 @@ Ahora podemos usar el componente y renderizar varios items ->
 <Item name="Bread" price="1.5" />
 <Item name="Ice cream" price="24" />
 ```
+
+### Enviando funciones por props
+
+Si enviamos una funcion de la siguiente manera -> `<button onClick={props.funcion()} />`,  la misma se ejecutara NO en el onClick, si no, al momento de cargar al componente.
+Es por eso que debemos usar la funcion dentro de una funcion arrow anonima `<button onClick={() => props.funcion()} />`
+
+## Destructuring
+
+`const {nombre, apellido} = props;`
+
+Lo declaramos antes, en vez de usar `props.nombre` cada ves que deseamos acceder a esa propiedad. 
 
 # States 🚀️
 
@@ -314,7 +337,7 @@ class Counter extends React.Component {
   render() {
     return <div>
     <p>{this.state.counter}</p>
-    <button **onClick={this.increment}**>Increment</button>
+    <button onClick={this.increment}>Increment</button>
     </div>;
   }
 }
@@ -367,12 +390,13 @@ longitud: 13
 
 Aca podemos ver como se usa con la aplicacion del contador ->
 
-```
+```javascript
 function Counter() {
   const [counter, setCounter] = useState(0);
 
   function increment() {
-    setCounter(counter+1);
+    setCounter(counter+1); 
+    setCounter(counter => counter +1) // Si no tenemos acceso al valor del estado actual
   }
 
   return <div>
@@ -402,7 +426,7 @@ componentDidMount() {
 }
 ```
 
-Se recomienda para pedir la informacion inicial de los componentes. 
+Se recomienda para pedir la informacion inicial de los componentes.
 
 **componentWillUnmount()**
 Es llamado antes de que el componente vaya a ser desmontado del DOM. Se puede usar para librerar resources.
@@ -791,8 +815,6 @@ const store = createStore(
 
 Las funciones que podemos despachar tienen una firma, o parametros que podemos usar
 
-> 
-
 # React Asincrónico
 
 Si estamos por ejemplo, haciendo una pagina de noticias tendremos que obtener las mismas desde una API o un servicio web. Tambien si estamos haciendo un login, tendremos que pasarle las credenciales a un servicio para poder obtener el token de acceso.
@@ -871,6 +893,4 @@ componentDidMount() {
  );
  }
 ```
-
-
 
